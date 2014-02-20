@@ -2,7 +2,7 @@
 
 use Illuminate\Support\ServiceProvider;
 use SintLucas\Survey\Answer;
-use SintLucas\Survey\Controllers\FrontendController;
+use SintLucas\Survey\Controllers\SurveyController;
 use SintLucas\Survey\Option;
 use SintLucas\Survey\Question;
 use SintLucas\Survey\Result;
@@ -37,12 +37,12 @@ class SurveyServiceProvider extends ServiceProvider {
 	{
 		$this->app['survey.repo'] = $this->app->share(function($app)
 		{
-			return new SurveyRepository(new Survey, new Question, new Option, new Result, new Answer);
+			return new SurveyRepository($app['db'], new Survey, new Question, new Option, new Result, new Answer);
 		});
 
-		$this->app['survey.controllers.frontend'] = $this->app->share(function($app)
+		$this->app['survey.controllers.survey'] = $this->app->share(function($app)
 		{
-			return new FrontendController($app['survey.repo'], $app['school.repo']);
+			return new SurveyController($app['survey.repo'], $app['school.repo']);
 		});
 	}
 

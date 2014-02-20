@@ -1,9 +1,10 @@
 <?php namespace SintLucas\Survey\Views\Question;
 
 use Illuminate\Support\Facades\View;
+use SintLucas\Core\AbstractView;
 use SintLucas\Survey\Question;
 
-class OpenView {
+class OpenView extends AbstractView {
 
 	public function __construct(Question $question)
 	{
@@ -17,11 +18,6 @@ class OpenView {
 		$view->label = $this->question->label;
 
 		return $view;
-	}
-
-	public function __toString()
-	{
-		return (string) $this->render();
 	}
 
 }

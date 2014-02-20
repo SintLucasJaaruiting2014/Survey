@@ -5,8 +5,9 @@ use Illuminate\Support\Facades\Input;
 use SintLucas\School\SchoolRepository;
 use SintLucas\Survey\SurveyRepository;
 use SintLucas\Survey\Views\SurveyView;
+use SintLucas\Survey\Views\ResultView;
 
-class FrontendController extends Controller {
+class SurveyController extends Controller {
 
 	protected $surveyRepo;
 	protected $schoolRepo;
@@ -54,6 +55,23 @@ class FrontendController extends Controller {
 			{
 				//
 			}
+		}
+	}
+
+	/**
+	 * Show the results of the survey.
+	 *
+	 * @param  string $slug
+	 * @return string
+	 */
+	public function results($slug)
+	{
+		if($survey = $this->surveyRepo->findBySlug($slug))
+		{
+			$results = $this->surveyRepo->getResults($survey->id);
+			$programs = $this->schoolRepo->getPrograms();
+
+			return new ResultView($survey, $results, $programs);
 		}
 	}
 

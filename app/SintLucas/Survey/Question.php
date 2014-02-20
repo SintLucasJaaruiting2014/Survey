@@ -12,6 +12,16 @@ class Question extends Model {
 	protected $table = 'survey_questions';
 
 	/**
+	 * Has many relation with the option model.
+	 *
+	 * @return \Illuminate\Database\Eloquent\Relations\HasMany
+	 */
+	public function answers()
+	{
+		return $this->hasMany('SintLucas\Survey\Answer');
+	}
+
+	/**
 	 * Belongs to relation with the survey model.
 	 *
 	 * @return \Illuminate\Database\Eloquent\Relations\BelongsTo

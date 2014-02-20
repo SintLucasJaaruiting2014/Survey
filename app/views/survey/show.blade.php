@@ -6,7 +6,7 @@
 		{{ $description }}
 	</div>
 
-	{{ Form::open(array('action' => 'survey.controllers.frontend@store')) }}
+	{{ Form::open(array('action' => array('survey.controllers.frontend@store', $slug))) }}
 
 		<div class="row">
 			<div class="form-group col-md-6">

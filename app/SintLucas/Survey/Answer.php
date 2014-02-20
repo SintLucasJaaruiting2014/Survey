@@ -16,7 +16,12 @@ class Answer extends Model {
 	 *
 	 * @var array
 	 */
-	protected $fillable = array('value', 'custom', 'multiple_choice');
+	protected $fillable = array(
+		'custom',
+		'multiple_choice',
+		'question_id',
+		'value'
+	);
 
 	/**
 	 * Belongs to relation with the question model.

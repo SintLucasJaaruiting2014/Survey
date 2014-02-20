@@ -1,0 +1,8 @@
+SELECT q.label, o.label, count(a.value) FROM survey_surveys s
+join survey_questions q on s.id = q.survey_id
+join survey_options o on q.id = o.question_id
+left join survey_answers a on o.id = a.value
+where q.multiple_choice = 1
+and a.custom = 0
+group by a.value
+order by q.id

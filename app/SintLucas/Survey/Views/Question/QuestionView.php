@@ -1,11 +1,12 @@
-<?php namespace SintLucas\Survey\Views;
+<?php namespace SintLucas\Survey\Views\Question;
 
 use Illuminate\Support\Facades\View;
+use SintLucas\Core\AbstractView;
 use SintLucas\Survey\QuestionCollection;
 use SintLucas\Survey\Views\Question\MultipleChoiceView;
 use SintLucas\Survey\Views\Question\OpenView;
 
-class QuestionView {
+class QuestionView extends AbstractView {
 
 	protected $questions;
 
@@ -16,7 +17,7 @@ class QuestionView {
 
 	public function render()
 	{
-		$view = View::make('survey.question.index');
+		$view = View::make('survey.question.list');
 
 		$view->questions = array();
 		foreach($this->questions as $question)
@@ -33,10 +34,4 @@ class QuestionView {
 
 		return $view;
 	}
-
-	public function __toString()
-	{
-		return (string) $this->render();
-	}
-
 }

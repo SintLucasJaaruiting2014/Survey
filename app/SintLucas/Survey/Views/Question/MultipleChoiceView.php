@@ -1,9 +1,10 @@
 <?php namespace SintLucas\Survey\Views\Question;
 
 use Illuminate\Support\Facades\View;
+use SintLucas\Core\AbstractView;
 use SintLucas\Survey\Question;
 
-class MultipleChoiceView {
+class MultipleChoiceView extends AbstractView {
 
 	public function __construct(Question $question)
 	{
@@ -19,11 +20,6 @@ class MultipleChoiceView {
 		$view->customAllowed = $this->question->customAllowed();
 
 		return $view;
-	}
-
-	public function __toString()
-	{
-		return (string) $this->render();
 	}
 
 }

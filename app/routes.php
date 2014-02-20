@@ -11,9 +11,17 @@
 |
 */
 
-Route::get('{all}', 'survey.controllers.frontend@show')->where('all', '.*');
-Route::post('{all}', 'survey.controllers.frontend@store')->where('all', '.*');
+Route::group(array('prefix' => 'onderzoek'), function()
+{
+	Route::get('{slug}/resultaten', 'survey.controllers.survey@results');
+	Route::get('{slug}', 'survey.controllers.survey@show');
+	Route::post('{slug}', 'survey.controllers.survey@store');
+});
 
+Route::get('{all}', function()
+{
+	return '';
+})->where('all', '.*');
 
 // Route::get('test', function()
 // {

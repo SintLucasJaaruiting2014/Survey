@@ -25,6 +25,7 @@ class CreateSurveyResultTables extends Migration {
 		{
 			$table->increments('id');
 			$table->integer('result_id');
+			$table->integer('question_id');
 			$table->string('value');
 			$table->boolean('multiple_choice');
 			$table->boolean('custom');

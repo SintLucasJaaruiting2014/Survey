@@ -21,4 +21,14 @@ class Survey extends Model {
 		return $this->hasMany('SintLucas\Survey\Question');
 	}
 
+	/**
+	 * Has many relation with the result model.
+	 *
+	 * @return \Illuminate\Database\Eloquent\Relations\HasMany
+	 */
+	public function results()
+	{
+		return $this->hasMany('SintLucas\Survey\Result');
+	}
+
 }

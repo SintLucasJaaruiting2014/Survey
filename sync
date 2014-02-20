@@ -1,0 +1,1 @@
+rsync -av . admin@rojvroemen.com:domains/rojvroemen.com/public_html/sintlucasjaaruiting
